@@ -4,10 +4,38 @@
  * Based on the code from https://wiki.gnome.org/Projects/GnomeShell/Extensions/StepByStepTutorial#myFirstExtension
  *
  * by d0h0@tuta.io (20161027)
+ * 
+ * 
+ * 
+ * 
+ * # README
+
+# Install
+TODO
+
+
+
+# Development
+
+### Build package
+`gnome-extensions pack dim.desktop.70@d0h0.tuta.io`
+
+
+### Run package in Wayland
+`dbus-run-session -- gnome-shell --nested --wayland`
+
+
+
+`gnome-extensions install dim.desktop.70@d0h0.tuta.io.shell-extension.zip --force`
+
+Open gnome-extensions in the new gnome window and enable the extension.
+
+
+
  */
 const St = imports.gi.St; //Gobject-Introspection https://developer.gnome.org/gobject/stable/
 const Main = imports.ui.main; //Main.layoutManager.monitor https://developer.gnome.org/gtk3/stable/
-const Tweener = imports.ui.tweener;
+//const Tweener = imports.ui.tweener;
 
 let text, button;
 
@@ -75,8 +103,10 @@ function init() {
     button = new St.Bin({ style_class: 'panel-button',
                           reactive: true,
                           can_focus: true,
-                          x_fill: true,
-                          y_fill: false,
+                        //   x_fill: true,
+                        //   y_fill: false,
+                        x_expand: true,
+                        y_expand: false,
                           track_hover: true });
 
     //usr/share/icons/gnome/scalable/actions/system-run-symbolic.svg
